@@ -533,6 +533,23 @@ class DeepKeysTest
     // not implemented follow
     //============================
 
+    private static function testSqlImplodeInjection()
+    {
+        $sql = 'SELECT * FROM rbstools.delete_me dm WHERE dm.price < 50;';
+        $sql =
+            'SELECT *FROM rbstools.delete_me dm '.
+            'WHERE dm.price < 50;';
+        $sql = implode(PHP_EOL, [
+            'SELECT *FROM rbstools.delete_me dm ',
+            'WHERE dm.price < 50;',
+        ]);
+        $huj = 
+<<< SQL
+            SELECT * FROM delete_me
+            WHERE name = '213asd';
+SQL;
+    }
+
     private static function makeCoolOutfit($materials)
     {
         return [

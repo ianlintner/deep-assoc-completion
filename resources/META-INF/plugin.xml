@@ -44,6 +44,13 @@ This plugin greatly extends phpstorm's associative array completion and typing<b
         <gotoDeclarationHandler implementation="org.klesun.deep_assoc_completion.go_to_decl_providers.DeepKeysGoToDecl"/>
         <gotoDeclarationHandler implementation="org.klesun.deep_assoc_completion.go_to_decl_providers.ArrayColumnGoToDecl"/>
         <gotoDeclarationHandler implementation="org.klesun.deep_assoc_completion.go_to_decl_providers.ArrFuncRefGoToDecl"/>
+        <!-- trying to make SQL injections recognize string parts separated by coma -->
+        <patterns.patternClass order="first" language="PHP" className="org.klesun.deep_assoc_completion.entry.PhpPatterns2" alias="php"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="org.intellij.intelliLang">
+        <languageSupport implementation="org.klesun.deep_assoc_completion.entry.PhpLanguageInjectionSupport2"/>
+        <injectionConfig config="resources/deepInjections.xml"/>
     </extensions>
 
     <extensions defaultExtensionNs="com.jetbrains.php">
@@ -59,6 +66,7 @@ This plugin greatly extends phpstorm's associative array completion and typing<b
 
     <!-- gonna implement array keys inference from SELECT * -->
     <depends>com.intellij.database</depends>
+    <!--<depends>org.intellij.plugins.intelliLang.inject</depends>-->
 
     <actions>
         <action

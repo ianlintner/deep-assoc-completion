@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="LanguageInjectionConfiguration">
+  <injection language="SQL" injector-id="php2">
+    <display-name>"SQL huj implode select/delete/insert/update/create"</display-name>
+    <place><![CDATA[phpLiteralMatchesBrics2(" *(((SELECT|DELETE) .*FROM)|((INSERT|REPLACE) .*INTO)|(UPDATE .* SET)|((CREATE|DROP|ALTER) +((TEMPORARY )?TABLE|(UNIQUE )?INDEX))) .*")]]></place>
+  </injection>
+</component>
